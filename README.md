@@ -1,9 +1,9 @@
-###Issue description
+### Issue description
 
 A `RefreshScope` refresh triggers Vault re-authentication, which fails with 
 `cubbyhole` authentication mode, causing the refresh to fail.
 
-###Steps to reproduce
+### Steps to reproduce
 
 1. Start up and initialize Vault: `docker-compose up -d`
 1. Copy the wrapped token from the output. Note: currently this is output as `vault_1  | <token value>+ echo` where the `+` is not part of the token. 

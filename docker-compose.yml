@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  vault:
+    image: vault:1.3.4
+    ports:
+      - 8200:8200
+    entrypoint: ""
+    command: >
+      /bin/sh -c -x '(docker-entrypoint.sh server -dev) &
+      (export VAULT_ADDR=http://127.0.0.1:8200 &&
+      sleep 3s &&
+      cp /home/vault/.vault-token ~/.vault-token &&
+      vault token create -wrap-ttl=1440m -field=wrapping_token && echo); wait'
